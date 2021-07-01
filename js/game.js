@@ -18,6 +18,10 @@ class game {
         document.body.appendChild(this.canvas);
 
         this.render();
+
+        for (let i = Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 0; i--)
+            color.push(Math.floor(Math.random()*16777215).toString(16));
+
         this.loop();
         this.listenTouch();
     }
@@ -25,12 +29,10 @@ class game {
     listenTouch() {
         document.addEventListener("touchmove", evt => {
             A = [];
-            color = [];
             for (let i = 0; i < evt.touches.length; i++) {
                 var x = evt.touches[i].pageX;
                 var y = evt.touches[i].pageY;
                 A.push({x, y});
-                color.push(Math.floor(Math.random()*16777215).toString(16));
                 if (A.length > 100) {
                     A.splice(0, 1);
                     color.splice(0, 1);
@@ -45,12 +47,10 @@ class game {
 
         document.addEventListener("touchstart", evt => {
             A = [];
-            color = [];
             for (let i = 0; i < evt.touches.length; i++) {
                 var x = evt.touches[i].pageX;
                 var y = evt.touches[i].pageY;
                 A.push({x, y});
-                color.push(Math.floor(Math.random()*16777215).toString(16));
                 this.drawCircle(x, y);
             }
             if (evt.touches.length != N) {
@@ -62,7 +62,6 @@ class game {
 
         document.addEventListener("touchend", evt => {    
             A = [];
-            color = [];
             if (evt.touches.length != N) {
                 Time = 5;
                 N = evt.touches.length;
@@ -106,8 +105,8 @@ class game {
         if (A.length > 0) {
             if (RD == -1)
                 RD = Math.floor(Math.random() * 100000000) % A.length;
-            for (let i = Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 50; i--)
-                this.drawCircle(A[RD].x, A[RD].y, i);
+            for (let i = Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 70; i--)
+                this.drawCircle(A[RD].x, A[RD].y, i, color[i - 70]);
         }
     }
 
@@ -117,8 +116,8 @@ class game {
         this.context.fillText(Time, game_W / 2 - this.getWidth() * 3.8, game_H / 2 + this.getWidth() * 4.3);
     }
 
-    drawCircle(x, y, r) {
-        this.context.strokeStyle = '#' + Math.floor(Math.random()*16777215).toString(16);
+    drawCircle(x, y, r, cl) {
+        this.context.strokeStyle = '#' + cl;
         this.context.beginPath();
         this.context.arc(x, y, r, 0, 2 * Math.PI);
         this.context.stroke();
