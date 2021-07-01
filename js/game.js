@@ -101,10 +101,10 @@ class game {
     draw() {
         this.clearScreen();
         if (A.length > 0) {
-            // let rd = Math.floor(Math.random * 100000000) % A.length;
-            // rd = 0;
-            for (let i = 100; i >= 30; i--)
-                this.drawCircle(A[0].x, A[0].y, i, color[0]);
+            let rd = Math.floor(Math.random() * 100000000) % A.length;
+            console.log(rd);
+            for (let i = Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 30; i--)
+                this.drawCircle(A[rd].x, A[rd].y, i);
         }
     }
 
@@ -114,8 +114,8 @@ class game {
         this.context.fillText(Time, game_W / 2 - this.getWidth() * 3.7, game_H / 2 + this.getWidth() * 4.3);
     }
 
-    drawCircle(x, y, r, cl) {
-        this.context.strokeStyle = '#' + cl;
+    drawCircle(x, y, r) {
+        this.context.strokeStyle = '#' + Math.floor(Math.random()*16777215).toString(16);
         this.context.beginPath();
         this.context.arc(x, y, r, 0, 2 * Math.PI);
         this.context.stroke();
