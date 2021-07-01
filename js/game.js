@@ -1,6 +1,7 @@
 let game_W = 0, game_H = 0;
 let Time = 5;
 let count = 1;
+let RD = -1;
 A = [];
 color = [];
 N = 0;
@@ -38,6 +39,7 @@ class game {
             if (evt.touches.length != N) {
                 Time = 5;
                 N = evt.touches.length;
+                RD = -1;
             }
         })
 
@@ -54,6 +56,7 @@ class game {
             if (evt.touches.length != N) {
                 Time = 5;
                 N = evt.touches.length;
+                RD = -1;
             }
         })
 
@@ -101,17 +104,17 @@ class game {
     draw() {
         this.clearScreen();
         if (A.length > 0) {
-            let rd = Math.floor(Math.random() * 100000000) % A.length;
-            console.log(rd);
-            for (let i = Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 30; i--)
-                this.drawCircle(A[rd].x, A[rd].y, i);
+            if (RD == -1)
+                RD = Math.floor(Math.random() * 100000000) % A.length;
+            for (let i = Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 50; i--)
+                this.drawCircle(A[RD].x, A[RD].y, i);
         }
     }
 
     drawTime() {
         this.context.fillStyle = "#CC0000";
         this.context.font = (Math.floor(this.getWidth() * 30 / 2)) + 'px Calibri';
-        this.context.fillText(Time, game_W / 2 - this.getWidth() * 3.7, game_H / 2 + this.getWidth() * 4.3);
+        this.context.fillText(Time, game_W / 2 - this.getWidth() * 3.8, game_H / 2 + this.getWidth() * 4.3);
     }
 
     drawCircle(x, y, r) {
