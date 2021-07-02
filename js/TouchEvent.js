@@ -107,7 +107,7 @@ class game {
         if (A.length > 0) {
             if (RD == -1)
                 RD = Math.floor(Math.random() * 100000000) % A.length;
-            for (let i = Math.floor(2 * Math.sqrt(game_W * game_W + game_H * game_H)); i >= 70; i--)
+            for (let i = Math.floor(2 * Math.sqrt(game_W * game_W + game_H * game_H)); i >= 70; i -= this.getWidth())
                 this.drawCircle(A[RD].x, A[RD].y, i, color[i - 70]);
         }
     }
@@ -120,7 +120,7 @@ class game {
 
     drawArrayTouch() {
         for (let i = 0; i < A.length; i++) {
-            for (let j = 75; j >= 70; j--)
+            for (let j = 75; j >= 70; j -= this.getWidth())
             this.drawCircle(A[i].x, A[i].y, j, color[j]);
         }
     }
@@ -128,13 +128,14 @@ class game {
     drawCircle(x, y, r, cl) {
         this.context.strokeStyle = '#' + cl;
         this.context.beginPath();
+        this.context.lineWidth = this.getWidth();
         this.context.arc(x, y, r, 0, 2 * Math.PI);
         this.context.stroke();
     }
 
     getWidth() {
         var area = document.documentElement.clientWidth * document.documentElement.clientHeight;
-        return Math.sqrt(area / 400);
+        return Math.floor(Math.sqrt(area / 400));
     }
 }
 
