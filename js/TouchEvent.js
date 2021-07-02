@@ -107,7 +107,7 @@ class game {
     }
 
     draw() {
-        console.log(RD);
+        console.log(Math.floor(Math.random() * 1000000) % 10);
         this.clearScreen();
         if (A.length > 0) {
             if (RD == -1)
@@ -120,7 +120,7 @@ class game {
     drawTime() {
         this.context.fillStyle = "#CC0000";
         this.context.font = (Math.floor(widthLine * 15)) + 'px Calibri';
-        this.context.fillText(Time, game_W / 2 - widthLine * 3.8, game_H / 2 + widthLine * 4.3);
+        this.context.fillText(A.length, game_W / 2 - widthLine * 3.8, game_H / 2 + widthLine * 4.3);
     }
 
     drawArrayTouch() {
