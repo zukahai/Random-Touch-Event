@@ -73,6 +73,7 @@ class game {
     loop() {
         this.update();
         setTimeout(() => this.loop(), 20);
+        this.drawArrayTouch();
     }
 
     update() {
@@ -114,6 +115,13 @@ class game {
         this.context.fillStyle = "#CC0000";
         this.context.font = (Math.floor(this.getWidth() * 30 / 2)) + 'px Calibri';
         this.context.fillText(Time, game_W / 2 - this.getWidth() * 3.8, game_H / 2 + this.getWidth() * 4.3);
+    }
+
+    drawArrayTouch() {
+        for (let i = 0; i < A.length; i++) {
+            for (let j = 75; j >= 70; j--)
+            this.drawCircle(A[i].x, A[i].y, j, color[j]);
+        }
     }
 
     drawCircle(x, y, r, cl) {
