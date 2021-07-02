@@ -73,13 +73,13 @@ class game {
 
     loop() {
         this.update();
-        setTimeout(() => this.loop(), 20);
+        setTimeout(() => this.loop(), 30);
     }
 
     update() {
         this.render();
         count++;
-        if (count % 40 == 0 && Time > 0)
+        if (count % 30 == 0 && Time > 0)
             Time --;
         this.clearScreen();
         if (Time == 0)
