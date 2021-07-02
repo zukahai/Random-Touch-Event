@@ -73,7 +73,6 @@ class game {
     loop() {
         this.update();
         setTimeout(() => this.loop(), 20);
-        this.drawArrayTouch();
     }
 
     update() {
@@ -84,8 +83,10 @@ class game {
         this.clearScreen();
         if (Time == 0)
             this.draw();
-        else
+        else {
+            this.drawArrayTouch();
             this.drawTime();
+        }
     }
 
     render() {
