@@ -6,7 +6,7 @@ A = [];
 color = [];
 N = 0;
 widthLine = 30;
-class game {
+class TouchEvent {
     constructor() {
         this.canvas = null;
         this.context = null;
@@ -139,4 +139,4 @@ class game {
     }
 }
 
-var g = new game();
+var g = new TouchEvent();
