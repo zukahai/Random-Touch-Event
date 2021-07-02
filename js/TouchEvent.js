@@ -19,7 +19,7 @@ class game {
 
         this.render();
 
-        for (let i = Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 0; i--)
+        for (let i = 2 * Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 0; i--)
             color.push(Math.floor(Math.random()*16777215).toString(16));
 
         this.loop();
@@ -106,7 +106,7 @@ class game {
         if (A.length > 0) {
             if (RD == -1)
                 RD = Math.floor(Math.random() * 100000000) % A.length;
-            for (let i = Math.floor(Math.sqrt(game_W * game_W + game_H * game_H)); i >= 70; i--)
+            for (let i = Math.floor(2 * Math.sqrt(game_W * game_W + game_H * game_H)); i >= 70; i--)
                 this.drawCircle(A[RD].x, A[RD].y, i, color[i - 70]);
         }
     }
