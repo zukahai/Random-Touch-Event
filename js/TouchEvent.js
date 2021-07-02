@@ -107,19 +107,20 @@ class game {
     }
 
     draw() {
+        console.log(RD);
         this.clearScreen();
         if (A.length > 0) {
             if (RD == -1)
                 RD = Math.floor(Math.random() * 100000000) % A.length;
             for (let i = Math.floor(2 * Math.sqrt(game_W * game_W + game_H * game_H)); i >= 70; i -= widthLine)
-                this.drawCircle(A[RD].x, A[RD].y, i, color[i - 70]);
+                this.drawCircle(A[0].x, A[0].y, i, color[i - 70]);
         }
     }
 
     drawTime() {
         this.context.fillStyle = "#CC0000";
         this.context.font = (Math.floor(widthLine * 30 / 2)) + 'px Calibri';
-        this.context.fillText(RD, game_W / 2 - widthLine * 3.8, game_H / 2 + widthLine * 4.3);
+        this.context.fillText(Time, game_W / 2 - widthLine * 3.8, game_H / 2 + widthLine * 4.3);
     }
 
     drawArrayTouch() {
