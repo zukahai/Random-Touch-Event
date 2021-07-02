@@ -42,10 +42,8 @@ class game {
             if (evt.touches.length != N) {
                 Time = 5;
                 N = evt.touches.length;
-                RD = -1;
+                RD = Math.floor(Math.random() * 1000000) % A.length;
             }
-            // if (RD != -1)
-            //     this.draw();
         })
 
         document.addEventListener("touchstart", evt => {
@@ -59,7 +57,7 @@ class game {
             if (evt.touches.length != N) {
                 Time = 5;
                 N = evt.touches.length;
-                RD = -1;
+                RD = Math.floor(Math.random() * 1000000) % A.length;
             }
         })
 
@@ -109,8 +107,6 @@ class game {
     draw() {
         this.clearScreen();
         if (A.length > 0) {
-            if (RD == -1)
-                RD = Math.floor(Math.random() * 1000000) % A.length;
             for (let i = Math.floor(2 * Math.sqrt(game_W * game_W + game_H * game_H)); i >= 70; i -= widthLine)
                 this.drawCircle(A[RD].x, A[RD].y, i, color[i - 70]);
         }
