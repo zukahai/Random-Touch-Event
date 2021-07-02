@@ -119,7 +119,7 @@ class game {
     drawTime() {
         this.context.fillStyle = "#CC0000";
         this.context.font = (Math.floor(widthLine * 30 / 2)) + 'px Calibri';
-        this.context.fillText(Time, game_W / 2 - widthLine * 3.8, game_H / 2 + widthLine * 4.3);
+        this.context.fillText(RD, game_W / 2 - widthLine * 3.8, game_H / 2 + widthLine * 4.3);
     }
 
     drawArrayTouch() {
@@ -132,7 +132,7 @@ class game {
     drawCircle(x, y, r, cl) {
         this.context.strokeStyle = '#' + cl;
         this.context.beginPath();
-        this.context.lineWidth = widthLine;
+        this.context.lineWidth = widthLine * 1.2;
         this.context.arc(x, y, r, 0, 2 * Math.PI);
         this.context.stroke();
     }
