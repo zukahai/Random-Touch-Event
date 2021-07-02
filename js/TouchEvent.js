@@ -44,6 +44,8 @@ class game {
                 N = evt.touches.length;
                 RD = -1;
             }
+            // if (RD != -1)
+            //     this.draw();
         })
 
         document.addEventListener("touchstart", evt => {
@@ -82,7 +84,7 @@ class game {
         if (count % 30 == 0 && Time > 0)
             Time --;
         this.clearScreen();
-        if (Time == 0)
+        if (Time <= 0)
             this.draw();
         else {
             this.drawArrayTouch();
@@ -122,7 +124,7 @@ class game {
 
     drawArrayTouch() {
         for (let i = 0; i < A.length; i++) {
-            for (let j = 75; j >= 70; j -= widthLine)
+            for (let j = 75; j >= 70; j -= Math.floor(widthLine / 5))
             this.drawCircle(A[i].x, A[i].y, j, color[j]);
         }
     }
